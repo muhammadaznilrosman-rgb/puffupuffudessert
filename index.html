@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PuffuPuffuDessert</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Montserrat', sans-serif;
+            background-color: #242440;
+            background-image: url('https://www.transparenttextures.com/patterns/asfalt-dark.png');
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3em;
+            margin-bottom: 10px;
+        }
+        .product {
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            padding: 15px;
+            margin: 20px auto;
+            max-width: 500px;
+            text-align: left;
+        }
+        .product h2 {
+            color: #9a763f;
+            margin-bottom: 5px;
+        }
+        .note {
+            margin-top: 30px;
+            font-size: 0.9em;
+            color: #ccc;
+        }
+        form {
+            background-color: rgba(255, 255, 255, 0.08);
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 500px;
+            margin: 30px auto;
+            text-align: left;
+        }
+        label {
+            display: block;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        input, select, textarea {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border: none;
+            border-radius: 5px;
+            font-family: inherit;
+        }
+        button {
+            background-color: #9a763f;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin-top: 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        button:hover {
+            background-color: #b5894b;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>PuffuPuffuDessert</h1>
+
+    <div class="product">
+        <h2>Custard</h2>
+        <p>Soft shell, creamy centre — light, chill, seriously addictive.</p>
+        <p>Box of 16 - RM 34</p>
+        <p>Box of 30 - RM 62</p>
+    </div>
+
+    <div class="product">
+        <h2>Chocolate</h2>
+        <p>Not too sweet, just chocolatey enough to steal your heart.</p>
+        <p>Box of 16 - RM 38</p>
+        <p>Box of 30 - RM 68</p>
+    </div>
+
+    <div class="product">
+        <h2>Mixed</h2>
+        <p>Creamy custard, rich chocolate — no need to choose.</p>
+        <p>Box of 16 - RM 36</p>
+        <p>Box of 30 - RM 64</p>
+    </div>
+
+    <p class="note">Pre-order only. Order at least 1 day in advance.<br>Prices exclude the delivery fee.</p>
+
+    <form id="orderForm">
+        <label for="name">Your Name</label>
+        <input type="text" id="name" required>
+
+        <label for="product">Select Product</label>
+        <select id="product" required>
+            <option value="">--Choose--</option>
+            <option>Custard - 16pcs (RM34)</option>
+            <option>Custard - 30pcs (RM62)</option>
+            <option>Chocolate - 16pcs (RM38)</option>
+            <option>Chocolate - 30pcs (RM68)</option>
+            <option>Mixed - 16pcs (RM36)</option>
+            <option>Mixed - 30pcs (RM64)</option>
+        </select>
+
+        <label for="message">Additional Notes</label>
+        <textarea id="message" rows="3"></textarea>
+
+        <button type="submit">Send Order via WhatsApp</button>
+    </form>
+
+    <script>
+        document.getElementById('orderForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            let name = document.getElementById('name').value;
+            let product = document.getElementById('product').value;
+            let message = document.getElementById('message').value;
+            let phone = "60107061826";
+            let text = `Hello, I would like to order:\nName: ${name}\nProduct: ${product}\nNotes: ${message}`;
+            let url = `https://wa.me/${phone}?text=${encodeURIComponent(text)}`;
+            window.open(url, '_blank');
+        });
+    </script>
+
+</body>
+</html>
